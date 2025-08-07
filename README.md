@@ -8,3 +8,11 @@
     gcc main.c -o main
 ```
 
+
+```
+    echo "hello world\n hii siri" | ./main
+```
+
+```
+    ./main [SAMPLE.txt]  [flag] (flag is optional argument)
+```
