@@ -18,14 +18,14 @@ int main (int argc, char *argv[]) {
     if(argc <2){
         file = stdin;
     }else{
-        file = fopen(argv[1], 'r');
+        file = fopen(argv[1], "r");
         if(file == NULL){
             fprintf(stderr,"word counter cant open : %s", argv[1]);
             return 1;
         }
     }
 
-    while((c =get(file)) != EOF){
+    while((c =getc(file)) != EOF){
         characters++;
         
         if(c == '\n'){
@@ -37,6 +37,17 @@ int main (int argc, char *argv[]) {
             word_in =true ;
             word++;
         }
+    }
+
+    // show the ouput
+    printf("%7d  %7d  %7d" , lines,word , characters);
+    if(argc >1){
+        printf(" %s",argv[1]);
+    }
+    printf("\n");
+
+    if(file != stdin){
+        fclose(file);
     }
     return 0;
 }
