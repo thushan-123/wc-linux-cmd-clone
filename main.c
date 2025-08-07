@@ -40,26 +40,18 @@ int main (int argc, char *argv[]) {
         }
     }
 
-    bool show_word = false;
-    bool show_line = false;
-    bool show_char = false;
-
-    if (argc > 2) {
-        if (argv[2][0] == '-') {
-            for (int i = 1; argv[2][i] != '\0'; i++) {
-                switch(argv[2][i]) {
-                    case 'w': show_word = true; break;
-                    case 'l': show_line = true; break;
-                    case 'c': show_char = true; break;
-                    default:
-                        fprintf(stderr, "Unknown option: -%c\n", argv[2][i]);
-                        return 1;
-                }
-            }
+    if (argc >2){
+        if (strcmp(argv[2], "-w") == 0) {
+            printf("%7d", word);
+            
+        } else if (strcmp(argv[2], "-l") == 0) {
+            printf("%7d", lines);
+        } else if (strcmp(argv[2], "-c") == 0) {
+            printf("%7d", characters);
         }
-    } else {
-        // If no flag is provided, show all
-        show_word = show_line = show_char = true;
+        
+    }else{
+        printf("%7d/lines  %7d/words  %7d/chars" , lines, word , characters);
     }
 
     // show the ouput
