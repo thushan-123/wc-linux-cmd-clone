@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <ctype.h>
+#include <stdbool.h>
 
 
 int main (int argc, char *argv[]) {
@@ -12,7 +13,7 @@ int main (int argc, char *argv[]) {
     int word = 0;
     int characters = 0;
 
-    int word_in = 0 ;  // boolen vlue
+    int word_in = false ;  // boolen vlue
 
     if(argc <2){
         file = stdin;
@@ -26,6 +27,16 @@ int main (int argc, char *argv[]) {
 
     while((c =get(file)) != EOF){
         characters++;
+        
+        if(c == '\n'){
+            lines++;
+        }
+        if(isspace(c)){
+            word_in = false ;
+        }else if (! word_in){
+            word_in =true ;
+            word++;
+        }
     }
     return 0;
 }
