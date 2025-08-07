@@ -18,6 +18,14 @@ int main (int argc, char *argv[]) {
         file = stdin;
     }else{
         file = fopen(argv[1], 'r');
+        if(file == NULL){
+            fprintf(stderr,"word counter cant open : %s", argv[1]);
+            return 1;
+        }
+    }
+
+    while((c =get(file)) != EOF){
+        characters++;
     }
     return 0;
 }
