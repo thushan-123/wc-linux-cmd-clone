@@ -3,9 +3,9 @@
 #include <ctype.h>
 
 
-int main () {
+int main (int args, char *argv[]) {
 
-    FILE file;
+    FILE *file;
 
     return 0;
 }
