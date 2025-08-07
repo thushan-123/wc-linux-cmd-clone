@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <stdbool.h>
+#include <string.h>
 
 
 int main (int argc, char *argv[]) {
@@ -39,8 +40,30 @@ int main (int argc, char *argv[]) {
         }
     }
 
+    bool show_word = false;
+    bool show_line = false;
+    bool show_char = false;
+
+    if (argc > 2) {
+        if (argv[2][0] == '-') {
+            for (int i = 1; argv[2][i] != '\0'; i++) {
+                switch(argv[2][i]) {
+                    case 'w': show_word = true; break;
+                    case 'l': show_line = true; break;
+                    case 'c': show_char = true; break;
+                    default:
+                        fprintf(stderr, "Unknown option: -%c\n", argv[2][i]);
+                        return 1;
+                }
+            }
+        }
+    } else {
+        // If no flag is provided, show all
+        show_word = show_line = show_char = true;
+    }
+
     // show the ouput
-    printf("%7d  %7d  %7d" , lines,word , characters);
+    //printf("%7d  %7d  %7d" , lines, word , characters);
     if(argc >1){
         printf(" %s",argv[1]);
     }
